@@ -1,0 +1,35 @@
+# ============================================================================
+# RHyperLab 依赖清单
+#
+# 目标解释器：Anaconda base —— C:\ProgramData\Anaconda3\python.exe (Python 3.7.0)
+#
+# 注意：Python 3.7.0 是 3.7 系列最早的版本，而不少包要求 >=3.7.1，
+#       所以下面的版本区间是有意收紧的，是这台机器上实际可安装的上限。
+#       实测装出的版本：
+#         dash 2.15.0 / dash-bootstrap-components 1.5.0 / plotly 5.18.0
+#         pandas 1.1.5 / scikit-learn 1.0.2 / umap-learn 0.5.7
+#         Flask 2.2.5 / Werkzeug 2.2.3
+#       已由 Anaconda 自带、直接复用：numpy 1.21.6 / scipy 1.7.3 / PyWavelets 1.3.0
+#
+# 安装：
+#   C:\ProgramData\Anaconda3\python.exe -m pip install -r requirements.txt
+# ============================================================================
+
+dash>=2.14,<3
+dash-bootstrap-components>=1.4,<2
+plotly>=5.18,<6
+
+pandas>=1.1,<2
+numpy>=1.17,<2
+scipy>=1.7,<2
+scikit-learn>=1.0,<1.1
+pywavelets>=1.1,<2
+umap-learn>=0.5,<0.6
+
+# dash 2.x 的运行依赖，显式限位，避免被解析到不兼容 3.7 的更新版本
+Flask>=2.2,<2.3
+Werkzeug>=2.2,<2.3
+
+# 3D-CNN 深度学习分类器（可选，未安装时页面会给出人话提示，其余功能不受影响）。
+# torch 1.13.1 是支持 Python 3.7 的最后版本；必须用 PyTorch 官方 CPU 源安装：
+#   C:\ProgramData\Anaconda3\python.exe -m pip install "torch==1.13.1" --index-url https://download.pytorch.org/whl/cpu
